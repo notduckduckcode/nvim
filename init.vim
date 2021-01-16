@@ -1,11 +1,5 @@
 call plug#begin('~/.vim/plugged')
 
-    Plug 'glepnir/galaxyline.nvim'
-
-    Plug 'kyazdani42/nvim-web-devicons'
-
-    Plug 'ryanoasis/vim-devicons'
-
     Plug 'kevinhwang91/rnvimr'
 
     Plug 'norcalli/nvim-colorizer.lua'
@@ -18,19 +12,13 @@ call plug#begin('~/.vim/plugged')
 
     Plug 'jiangmiao/auto-pairs'
 
-    Plug 'christianchiarulli/nvcode-color-schemes.vim'
-
     Plug 'nvim-treesitter/nvim-treesitter'
 
     Plug 'tpope/vim-commentary'
 
-    Plug 'tpope/vim-speeddating'
-
     Plug 'unblevable/quick-scope'
 
     Plug 'machakann/vim-highlightedyank'
-
-    Plug 'ChristianChiarulli/vscode-easymotion'
 
     Plug 'sheerun/vim-polyglot'
 
@@ -43,8 +31,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'yuki-ycino/fzf-preview.vim', { 'branch': 'release', 'do': ':UpdateRemotePlugins' }
 
     Plug 'junegunn/fzf.vim'
-
-    Plug 'airblade/vim-gitgutter'
 
     Plug 'tpope/vim-fugitive'
 
@@ -62,8 +48,6 @@ call plug#begin('~/.vim/plugged')
 
 call plug#end()
 
-luafile $HOME/.config/nvim/lua/statusline.lua
-
 " configure treesitter
 lua << EOF
 require'nvim-treesitter.configs'.setup {
@@ -75,17 +59,25 @@ require'nvim-treesitter.configs'.setup {
 }
 EOF
 
-" configure nvcode-color-schemes
-let g:nvcode_termcolors=256
-
-syntax on
-colorscheme snazzy " Or whatever colorscheme you make
-
-
-" checks if your terminal has 24-bit color support
 if (has("termguicolors"))
     set termguicolors
     hi LineNr ctermbg=NONE guibg=NONE
 endif
+
+" Bindings
+
+nmap <Leader>gm <Plug>(git-messenger)
+
+" Copy to clipboard
+vnoremap  <leader>y  "+y
+nnoremap  <leader>Y  "+yg_
+nnoremap  <leader>y  "+y
+nnoremap  <leader>yy  "+yy
+
+" " Paste from clipboard
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
+vnoremap <leader>p "+p
+vnoremap <leader>P "+P
 
 set mouse=a
