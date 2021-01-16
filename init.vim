@@ -6,13 +6,13 @@ call plug#begin('~/.vim/plugged')
 
     Plug 'wesQ3/vim-windowswap'
 
+    Plug 'dracula/vim', { 'as': 'dracula' }
+
     Plug 'junegunn/goyo.vim'
 
     Plug 'mhinz/vim-startify'
 
     Plug 'jiangmiao/auto-pairs'
-
-    Plug 'nvim-treesitter/nvim-treesitter'
 
     Plug 'tpope/vim-commentary'
 
@@ -21,8 +21,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'machakann/vim-highlightedyank'
 
     Plug 'sheerun/vim-polyglot'
-
-    Plug 'nvim-treesitter/playground'
 
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -48,21 +46,12 @@ call plug#begin('~/.vim/plugged')
 
 call plug#end()
 
-" configure treesitter
-lua << EOF
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-  highlight = {
-    enable = true,              -- false will disable the whole extension
-    disable = { "c", "rust" },  -- list of language that will be disabled
-  },
-}
-EOF
-
 if (has("termguicolors"))
     set termguicolors
     hi LineNr ctermbg=NONE guibg=NONE
 endif
+
+colorscheme dracula
 
 " Bindings
 
